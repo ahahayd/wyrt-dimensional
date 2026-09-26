@@ -1,8 +1,8 @@
 # Wyrt Dimensional
 
-Módulo para Foundry VTT 13 e o sistema Tormenta20 que automatiza o baralho da cena do Wyrt Dimensional: compra por rodada, iniciativa pelas cartas, ações por naipe, figuras e Curinga, com uma HUD sincronizada entre mestre e jogadores.
+Módulo para Foundry VTT 13 e o sistema Tormenta20 que automatiza o baralho do Wyrt Dimensional, do suplemento **Jornada Heroica: Coração de Rubi**. Ele cuida da compra por rodada, da iniciativa pelas cartas, das ações por naipe, das figuras e do Curinga, com uma HUD sincronizada entre mestre e jogadores.
 
-> **Módulo de fã, não oficial.** Ele não traz os textos nem as artes do suplemento. As regras aparecem só se o mestre escrevê-las no editor do módulo, e as artes vêm dos baralhos do Foundry ou de uma pasta do próprio mestre. Para jogar a cena, você precisa do suplemento. Tormenta20 e Wyrt Dimensional pertencem à Jambo Editora.
+> **Módulo de fã, não oficial.** Ele não traz os textos nem as artes do suplemento. As regras aparecem só se o mestre escrevê-las no editor do módulo, e as artes vêm dos baralhos do Foundry ou de uma pasta do próprio mestre. Para jogar a cena, você precisa de *Jornada Heroica: Coração de Rubi*. Tormenta20 e *Jornada Heroica: Coração de Rubi* pertencem à Jambo Editora.
 
 ## Instalação
 
@@ -30,7 +30,13 @@ Em **Configurar Definições → Wyrt Dimensional → Artes das cartas**:
 
 ### Regras
 
-Clique no ícone de livro (na HUD ou no painel do mestre) e em **Editar regras**. O mestre pode escrever ou colar ali o texto do próprio suplemento. Os jogadores veem esse texto ao clicar no livro. Enquanto o mestre não escrever nada, o livro avisa que as regras ainda não foram preparadas.
+Clique no ícone de livro (na HUD ou no painel do mestre) e em **Editar regras**. A caixa aceita texto puro, em que uma linha em branco separa os parágrafos, ou HTML para quem quiser formatar. **Pré-visualizar** mostra o resultado antes de salvar. Os jogadores veem esse texto ao clicar no livro. Enquanto o mestre não escrever nada, o livro avisa que as regras ainda não foram preparadas.
+
+Para montar um quadro de referência como o de um livro, o HTML pode usar estas classes de layout do módulo:
+
+- `wyrt-rules-grid`: blocos lado a lado (cada `<section>` vira um card).
+- `wyrt-suit-rules`: grade de naipes. Cada item é um `<div>` com `<b class="red">♥</b>` ou `<b class="black">♠</b>` e um `<span>` com `<strong>` e `<small>`.
+- `wyrt-special-rules`: lista de parágrafos com a borda dourada à esquerda.
 
 ### Adversário
 

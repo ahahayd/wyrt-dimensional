@@ -1,7 +1,7 @@
 {
   "id": "wyrt-dimensional",
   "title": "Wyrt Dimensional",
-  "description": "<p>Baralho tático automatizado para Tormenta20: compra por rodada, iniciativa pela maior carta, consumo de ações por naipe, figuras e Curinga, com HUD animado para jogadores e painel do mestre. As regras e as artes são do mestre: o módulo usa os baralhos do Foundry ou uma pasta de artes própria, e traz um editor para o mestre escrever as regras da mesa.</p>",
+  "description": "<p>Baralho automatizado do Wyrt Dimensional, do suplemento <em>Jornada Heroica: Coração de Rubi</em> (Tormenta20): compra por rodada, iniciativa pela maior carta, ações por naipe, figuras e Curinga, com HUD animada para jogadores e painel do mestre. Módulo de fã, não oficial: as regras e as artes ficam por conta do mestre, que pode usar os baralhos do Foundry ou uma pasta de artes própria e escrever as regras da mesa no editor do módulo.</p>",
   "version": "0.1.0",
   "compatibility": {
     "minimum": "13",
