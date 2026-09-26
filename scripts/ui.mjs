@@ -602,31 +602,46 @@ async function enrichRules(text) {
   }
 }
 
+// Caixa de texto simples: aceita HTML (para colar um texto já formatado) ou
+// texto puro, que vira parágrafos ao salvar.
 function showRulesEditor() {
   if (!controller.isFullGM()) return;
-  const ProseMirrorElement = foundry.applications?.elements?.HTMLProseMirrorElement;
-  let editor;
   openModal(`
     <div class="wyrt-rules-editor">
       <span class="wyrt-eyebrow">Somente o mestre</span><h2>Editar regras</h2>
-      <p>Os jogadores verão este texto ao clicar no livro de regras.</p>
-      <div class="wyrt-rules-editor-slot"></div>
-      <div class="wyrt-rules-actions"><button type="button" data-modal-command="cancel">Cancelar</button><button type="button" class="wyrt-primary" data-modal-command="save"><i class="fa-solid fa-floppy-disk"></i> Salvar</button></div>
+      <p>Os jogadores verão este texto ao clicar no livro de regras. Aceita texto puro ou HTML.</p>
+      <textarea class="wyrt-rules-input" spellcheck="false" placeholder="Escreva as regras ou cole o HTML aqui…"></textarea>
+      <div class="wyrt-rules-body wyrt-rules-preview" hidden></div>
+      <div class="wyrt-rules-actions">
+        <button type="button" data-wyrt-preview><i class="fa-solid fa-eye"></i> Pré-visualizar</button>
+        <button type="button" data-modal-command="cancel">Cancelar</button>
+        <button type="button" class="wyrt-primary" data-modal-command="save"><i class="fa-solid fa-floppy-disk"></i> Salvar</button>
+      </div>
     </div>`, {
       labelledBy: "Editar regras",
       wide: true,
       closeOnBackdrop: false,
-      commands: { save: () => controller.saveRulesText(String(editor?.value ?? "")) }
+      commands: { save: () => controller.saveRulesText(rulesHTML(input.value)) }
     });
-  const slot = document.querySelector("#wyrt-dimensional-modal-layer .wyrt-rules-editor-slot");
-  if (ProseMirrorElement?.create) {
-    editor = ProseMirrorElement.create({ name: "rules", value: controller.rulesText(), editable: true, toggled: false });
-  } else {
-    editor = document.createElement("textarea");
-    editor.value = controller.rulesText();
-  }
-  editor.classList.add("wyrt-rules-input");
-  slot.append(editor);
+  const layer = document.querySelector("#wyrt-dimensional-modal-layer");
+  const input = layer.querySelector(".wyrt-rules-input");
+  const preview = layer.querySelector(".wyrt-rules-preview");
+  const toggle = layer.querySelector("[data-wyrt-preview]");
+  input.value = controller.rulesText();
+  input.focus();
+  toggle.addEventListener("click", async () => {
+    const showing = !preview.hidden;
+    if (!showing) preview.innerHTML = await enrichRules(rulesHTML(input.value));
+    preview.hidden = showing;
+    input.hidden = !showing;
+    toggle.innerHTML = showing ? '<i class="fa-solid fa-eye"></i> Pré-visualizar' : '<i class="fa-solid fa-pen"></i> Voltar a editar';
+  });
+}
+
+function rulesHTML(text) {
+  const value = String(text ?? "").trim();
+  if (!value || /<[a-z][\s\S]*>/i.test(value)) return value;
+  return value.split(/\n\s*\n/).map(paragraph => `<p>${escapeHTML(paragraph).replace(/\n/g, "<br>")}</p>`).join("");
 }
 
 function confirmModal(title, message) {

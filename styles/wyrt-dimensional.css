@@ -749,7 +749,9 @@
 .wyrt-choice small { color: #b9aa97; font-size: 10px; line-height: 1.25; margin-top: 2px; }
 .wyrt-choice-suit { font-family: Georgia, serif; font-size: 27px; line-height: 1; text-align: center; width: 28px; }
 .wyrt-choice-suit.red,
+.wyrt-suit-rules b.red { color: #e75e5e; }
 .wyrt-choice-suit.black,
+.wyrt-suit-rules b.black { color: #eee2cd; }
 
 .wyrt-inspector { display: grid; gap: 22px; grid-template-columns: 175px 1fr; }
 .wyrt-inspector .wyrt-danger { margin-top: 15px; }
@@ -776,6 +778,17 @@
 .wyrt-confirm { text-align: center; }
 .wyrt-confirm > div { display: flex; gap: 8px; justify-content: center; margin-top: 18px; }
 .wyrt-confirm button { min-width: 105px; }
+.wyrt-rules-grid { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+.wyrt-rules-grid section { background: rgba(255, 255, 255, 0.035); border: 1px solid rgba(215, 170, 88, 0.17); border-radius: 8px; padding: 10px; }
+.wyrt-rules-grid h3 { font-size: 18px; }
+.wyrt-rules-grid p { margin: 4px 0 0; }
+.wyrt-suit-rules { display: grid; gap: 8px; grid-template-columns: 1fr 1fr; margin: 14px 0; }
+.wyrt-suit-rules > div { align-items: center; background: rgba(255, 255, 255, 0.035); border-radius: 7px; display: flex; gap: 8px; padding: 7px 10px; }
+.wyrt-suit-rules b { font-family: Georgia, serif; font-size: 28px; width: 25px; }
+.wyrt-suit-rules span { display: flex; flex-direction: column; }
+.wyrt-suit-rules small { color: #baa98e; }
+.wyrt-special-rules { border-left: 2px solid #d7aa58; padding-left: 12px; }
+.wyrt-special-rules p { margin: 5px 0; }
 .wyrt-rules-body { line-height: 1.5; margin-top: 10px; }
 .wyrt-rules-body h1, .wyrt-rules-body h2, .wyrt-rules-body h3 { margin: 14px 0 6px; }
 .wyrt-rules-body img { max-width: 100%; }
@@ -785,7 +798,10 @@
 .wyrt-rules-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 16px; }
 .wyrt-rules-editor > p { color: #baa98e; margin: 4px 0 10px; }
 .wyrt-rules-input { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(215, 170, 88, 0.3); border-radius: 8px; color: #f5ead5; display: block; height: min(460px, calc(100vh - 300px)); min-height: 220px; overflow: auto; width: 100%; }
-textarea.wyrt-rules-input { font: inherit; padding: 10px; resize: vertical; }
+textarea.wyrt-rules-input { font-family: Consolas, "Courier New", monospace; font-size: 13px; line-height: 1.45; padding: 10px; resize: vertical; white-space: pre-wrap; }
+.wyrt-rules-input:focus { border-color: #d7aa58; outline: none; }
+.wyrt-rules-preview { border: 1px dashed rgba(215, 170, 88, 0.3); border-radius: 8px; max-height: min(460px, calc(100vh - 300px)); overflow: auto; padding: 10px 14px; }
+.wyrt-rules-actions [data-wyrt-preview] { margin-right: auto; }
 
 .wyrt-chat-card,
 .wyrt-chat-discard,
@@ -916,6 +932,7 @@ textarea.wyrt-rules-input { font: inherit; padding: 10px; resize: vertical; }
   .wyrt-inspector { grid-template-columns: 115px 1fr; }
   .wyrt-use-preview,
   .wyrt-inspector > img { width: 115px; }
+  .wyrt-rules-grid { grid-template-columns: 1fr; }
   .wyrt-deck-menu { grid-template-columns: 95px 1fr; }
   .wyrt-deck-large { height: 136px; width: 95px; }
   .wyrt-deck-large::before,
