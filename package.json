@@ -1,0 +1,9 @@
+{
+  "name": "wyrt-dimensional-foundry",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check scripts/cards.mjs && node --check scripts/engine.mjs && node --check scripts/ui.mjs && node --check scripts/main.mjs"
+  }
+}

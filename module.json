@@ -1,0 +1,47 @@
+{
+  "id": "wyrt-dimensional",
+  "title": "Wyrt Dimensional",
+  "description": "<p>Baralho tático automatizado para Tormenta20: compra por rodada, iniciativa pela maior carta, consumo de ações por naipe, figuras e Curinga, com HUD animado para jogadores e painel do mestre. As regras e as artes são do mestre: o módulo usa os baralhos do Foundry ou uma pasta de artes própria, e traz um editor para o mestre escrever as regras da mesa.</p>",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "tormenta20",
+        "type": "system",
+        "compatibility": {
+          "minimum": "1.5.0"
+        }
+      }
+    ],
+    "conflicts": [
+      {
+        "id": "wyrt-dimensional-copyright",
+        "type": "module",
+        "compatibility": {}
+      }
+    ]
+  },
+  "socket": true,
+  "esmodules": [
+    "scripts/main.mjs"
+  ],
+  "styles": [
+    "styles/wyrt-dimensional.css"
+  ],
+  "authors": [
+    {
+      "name": "Hayd",
+      "url": "https://github.com/ahahayd"
+    }
+  ],
+  "url": "https://github.com/ahahayd/wyrt-dimensional",
+  "bugs": "https://github.com/ahahayd/wyrt-dimensional/issues",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "manifest": "https://github.com/ahahayd/wyrt-dimensional/releases/latest/download/module.json",
+  "download": "https://github.com/ahahayd/wyrt-dimensional/releases/download/v0.1.0/module.zip"
+}
